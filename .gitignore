@@ -1,6 +1,5 @@
 HELP.md
 principal
-Docker-compose.yaml
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
