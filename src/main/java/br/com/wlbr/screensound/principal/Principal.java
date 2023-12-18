@@ -8,12 +8,25 @@ public class Principal {
         var opcao = -1;
         while (opcao != 0){
             var menu = """
+                    * * * Screen Sound Music * * *
+                    
+                    1 - Cadastrar artistas
                     
                     """;
 
             System.out.println(menu);
             opcao = leitura.nextInt();
             leitura.nextLine();
+            switch(opcao){
+                case 1:
+                    cadastrarArtistas();
+                     break;
+                case 2:
+            }
         }
+    }
+
+    private void cadastrarArtistas() {
+        System.out.println();
     }
 }
