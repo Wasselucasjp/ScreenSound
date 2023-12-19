@@ -5,6 +5,7 @@ import br.com.wlbr.screensound.model.Musica;
 import br.com.wlbr.screensound.model.TipoArtista;
 import br.com.wlbr.screensound.repository.ArtistaRepository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -24,6 +25,7 @@ public class Principal {
                     
                     1 - Cadastrar artistas
                     2 - Cadastrar musicas
+                    3 - Listar musicas
                     
                     """;
 
@@ -37,8 +39,15 @@ public class Principal {
                 case 2:
                     cadastrarMusicas();
                     break;
+                case 3:
+                    listarMusicas();
             }
         }
+    }
+
+    private void listarMusicas() {
+        List<Artista> artistas = repositorio.findAll();
+        artistas.forEach(System.out::println);
     }
 
     private void cadastrarMusicas() {
@@ -50,6 +59,7 @@ public class Principal {
             var nomeMusica = leitura.nextLine();
             Musica musica =  new Musica(nomeMusica);
             musica.setArtista(artista.get());
+            artista.get().getMusicas().add(musica);
             repositorio.save(artista.get());
         } else {
             System.out.println("artista não encontrado");
