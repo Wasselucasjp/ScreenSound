@@ -7,16 +7,21 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "musicas")
-public class Musicas {
+public class Musica {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
     @ManyToOne()
     private Artista artista;
+
+    public Musica(){}
+
+    public Musica(String nomeMusica) {
+        this.titulo = nomeMusica;
+    }
 
     @Override
     public String toString() {
