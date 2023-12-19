@@ -20,7 +20,7 @@ public class Artista {
     @Enumerated(EnumType.STRING)
     private TipoArtista tipo;
     @OneToMany(mappedBy = "artista")
-    private List<Musicas> musicas = new ArrayList<>();
+    private List<Musica> musicas = new ArrayList<>();
 
     public Artista (){}
 
