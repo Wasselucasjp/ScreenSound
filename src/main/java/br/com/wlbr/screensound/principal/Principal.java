@@ -26,6 +26,7 @@ public class Principal {
                     1 - Cadastrar artistas
                     2 - Cadastrar musicas
                     3 - Listar musicas
+                    4 - Buscar musicas por artistas
                     
                     """;
 
@@ -42,9 +43,18 @@ public class Principal {
                 case 3:
                     listarMusicas();
                     break;
-
+                case 4:
+                    buscarMusicaPorArtista();
+                    break;
             }
         }
+    }
+
+    private void buscarMusicaPorArtista() {
+        System.out.println("Buscar musica de que artista? ");
+        var nome = leitura.nextLine();
+        List<Musica> musicas =  repositorio.buscaMusicaPorArtista(nome);
+        musicas.forEach(System.out::println);
     }
 
     private void listarMusicas() {
