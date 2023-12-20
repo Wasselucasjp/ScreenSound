@@ -41,13 +41,15 @@ public class Principal {
                     break;
                 case 3:
                     listarMusicas();
+                    break;
+
             }
         }
     }
 
     private void listarMusicas() {
         List<Artista> artistas = repositorio.findAll();
-        artistas.forEach(System.out::println);
+        artistas.forEach(artista -> artista.getMusicas().forEach(System.out::println));
     }
 
     private void cadastrarMusicas() {
