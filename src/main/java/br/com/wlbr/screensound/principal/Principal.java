@@ -4,12 +4,14 @@ import br.com.wlbr.screensound.model.Artista;
 import br.com.wlbr.screensound.model.Musica;
 import br.com.wlbr.screensound.model.TipoArtista;
 import br.com.wlbr.screensound.repository.ArtistaRepository;
+import br.com.wlbr.screensound.service.ConsultaChaGPT;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
 public class Principal {
+    private ConsultaChaGPT consultaChaGPT;
     private final ArtistaRepository repositorio;
     private Scanner leitura =  new Scanner(System.in);
 
@@ -27,6 +29,7 @@ public class Principal {
                     2 - Cadastrar musicas
                     3 - Listar musicas
                     4 - Buscar musicas por artistas
+                    5 - Pesquisar dados do artista
                     
                     """;
 
@@ -46,8 +49,18 @@ public class Principal {
                 case 4:
                     buscarMusicaPorArtista();
                     break;
+                case 5:
+                    pesquisarDadosSobreArtista();
+                    break;
             }
         }
+    }
+
+    private void pesquisarDadosSobreArtista() {
+        System.out.println("Pesquisar dados sobre qual artista? ");
+        var nome =  leitura.nextLine();
+        var resposta = ConsultaChaGPT.ObterInformaçao(nome);
+        System.out.println(resposta.trim());
     }
 
     private void buscarMusicaPorArtista() {
